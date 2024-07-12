@@ -1,0 +1,23 @@
+{
+  "private": true,
+  "author": "fanxin@wafersystems.com <fanxin@wafersystems.com>",
+  "scripts": {
+    "dev": "umi dev",
+    "build": "umi build",
+    "postinstall": "umi setup",
+    "setup": "umi setup",
+    "start": "npm run dev"
+  },
+  "dependencies": {
+    "react-markdown": "^9.0.1",
+    "rehype-raw": "^7.0.0",
+    "remark-gfm": "^4.0.0",
+    "umi": "^4.3.5"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "raw-loader": "^4.0.2",
+    "typescript": "^5.5.3"
+  }
+}
