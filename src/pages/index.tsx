@@ -4,7 +4,7 @@ import remarkGfm from 'remark-gfm'
 import rehypeRaw from 'rehype-raw'
 import a from '@/files/a.md'
 
-const Markdown = () => {
+const Index = () => {
   const [mdContent, setMdContent] = useState('')
 
   return (
@@ -20,4 +20,4 @@ const Markdown = () => {
   )
 }
 
-export default Markdown
+export default Index

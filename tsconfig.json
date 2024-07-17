@@ -1,15 +1,16 @@
 {
   "extends": "./src/.umi/tsconfig.json",
   "compilerOptions": {
+    "baseUrl": "./",
     "jsx": "react",
-    "moduleResolution": "node",
     "paths": {
-      "@/*": ["./src/*"],
+      "@/*": ["src/*"],
       "@@/*": ["./src/.umi/*"]
     },
     "module": "commonjs",
+    "moduleResolution": "node",
     "resolveJsonModule": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
-  }
+  },
 }
