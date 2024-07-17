@@ -1,16 +1,41 @@
 {
-  "extends": "./src/.umi/tsconfig.json",
   "compilerOptions": {
-    "baseUrl": "./",
-    "jsx": "react",
+    "experimentalDecorators": true,
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "jsx": "react-jsx",
+    "esModuleInterop": true,
+    "sourceMap": true,
+    "baseUrl": "",
+    "strict": true,
+    "noImplicitAny": false,
+    "allowJs": true,
     "paths": {
       "@/*": ["src/*"],
-      "@@/*": ["./src/.umi/*"]
+      "@@/*": ["src/.umi/*"]
     },
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
-    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
+    "outDir": "./dist"
   },
+  "include": ["mock/**/*", "src/*", "typings.d.ts", "src"],
+  "exclude": [
+    "node_modules",
+    "lib",
+    "es",
+    "dist",
+    "typings",
+    "**/__test__",
+    "test",
+    "docs",
+    "tests",
+    "server",
+    "config/*",
+    "build",
+    "scripts",
+    "src/.umi/*",
+    "webpack",
+    "jest"
+  ]
 }
