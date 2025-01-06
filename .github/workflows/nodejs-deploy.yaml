@@ -20,6 +20,15 @@ jobs:
       with:
         node-version: '18' # 根据需要调整版本
 
+    - name: Debug package-lock.json
+      run: |
+        if [ -f package-lock.json ]; then
+          echo "package-lock.json exists:"
+          cat package-lock.json
+        else
+          echo "package-lock.json does not exist!"
+        fi
+
     - name: Install dependencies and build site
       run: |
         npm ci # 确保安装的是 package-lock.json 中锁定的依赖版本
