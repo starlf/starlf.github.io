@@ -21,7 +21,7 @@ jobs:
         node-version: '18' # 根据需要调整版本
         cache: 'pnpm' # 使用 pnpm 缓存
 
-     - name: Debug pnpm-lock.yaml
+    - name: Debug pnpm-lock.yaml
       run: |
         if [ -f pnpm-lock.yaml ]; then
           echo "pnpm-lock.yaml exists:"
