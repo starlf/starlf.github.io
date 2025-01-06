@@ -1,21 +1,33 @@
-name: SSH Deploy
+name: Deploy to GitHub Pages
 
-on: [push]
+on:
+  push:
+    branches:
+      - main # 触发构建的源分支
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-    - name: Deploy to Server
-      uses: easingthemes/ssh-deploy@v2.1.5
       with:
-        REMOTE_HOST: github.com
-        REMOTE_USER: git
-        REMOTE_PORT: 22
-        TARGET: git@github.com:starlf/starlf.github.io.git
-        ARGS: -rltgoDzvO
-      env:
-        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-        ARGS: -avz --delete --exclude='.git/' /home/runner/work/starlf.github.io/starlf.github.io /path/to/actual/remote/directory
+        submodules: true # 如果有子模块的话
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14' # 根据需要调整版本
+
+    - name: Install dependencies and build site
+      run: |
+        npm ci # 确保安装的是 package-lock.json 中锁定的依赖版本
+        npm run build # 如果你需要构建站点的话，请确保这是正确的构建命令
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./dist # 构建后的站点输出目录，根据实际情况调整
+        commit_message: ${{ github.event.head_commit.message }} # 可选：使用最近一次提交的消息作为此次部署的提交消息
