@@ -14,7 +14,7 @@ jobs:
         REMOTE_HOST: github.com
         REMOTE_USER: git
         REMOTE_PORT: 22
-        TARGET: https://github.com/starlf/starlf.github.io.git
+        TARGET: git@github.com:starlf/starlf.github.io.git
         ARGS: -rltgoDzvO
       env:
         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
