@@ -19,20 +19,21 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: '18' # 根据需要调整版本
+        cache: 'pnpm' # 使用 pnpm 缓存
 
-    - name: Debug package-lock.json
+     - name: Debug pnpm-lock.yaml
       run: |
-        if [ -f package-lock.json ]; then
-          echo "package-lock.json exists:"
-          cat package-lock.json
+        if [ -f pnpm-lock.yaml ]; then
+          echo "pnpm-lock.yaml exists:"
+          cat pnpm-lock.yaml
         else
-          echo "package-lock.json does not exist!"
+          echo "pnpm-lock.yaml does not exist!"
         fi
 
     - name: Install dependencies and build site
       run: |
-        npm ci # 确保安装的是 package-lock.json 中锁定的依赖版本
-        npm run build # 如果你需要构建站点的话，请确保这是正确的构建命令
+        pnpm install # 使用 pnpm 安装依赖
+        pnpm run build # 构建站点
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
