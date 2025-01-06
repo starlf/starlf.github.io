@@ -14,8 +14,10 @@ jobs:
         REMOTE_HOST: github.com
         REMOTE_USER: git
         REMOTE_PORT: 22
+        # 将 HTTPS 地址转换为 SSH 地址
         TARGET: git@github.com:starlf/starlf.github.io.git
         ARGS: -rltgoDzvO
       env:
         SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-        ARGS: -avz --delete --exclude='.git/' /path/to/local/directory user@server:/path/to/remote/directory
+        # 修改为正确的本地和远程目录
+        ARGS: -avz --delete --exclude='.git/' /path/to/actual/local/directory git@github.com:/path/to/actual/remote/directory
