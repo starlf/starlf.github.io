@@ -5,7 +5,7 @@ const path = require('path');
 export default defineConfig({
   routes: [
     { path: "/", component: "index" },
-    { path: "/docs", component: "docs" },
+    { path: "/docs/:docName", component: "docs" }, // 添加文档路由
   ],
   npmClient: "pnpm",
   chainWebpack: (memo) => {
