@@ -1,0 +1,22 @@
+name: SSH Deploy
+
+on: [push]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Deploy to Server
+      uses: easingthemes/ssh-deploy@v2.1.5
+      with:
+        REMOTE_HOST: your_remote_host
+        REMOTE_USER: your_remote_user
+        REMOTE_PORT: 22
+        TARGET: /home/REMOTE_USER/
+        ARGS: -rltgoDzvO
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+        ARGS: -avz --delete --exclude='.git/' /path/to/local/directory user@server:/path/to/remote/directory
+    [general] GITHUB_WORKSPACE:  /home/runner/work/starlf.github.io/starlf.github.io
