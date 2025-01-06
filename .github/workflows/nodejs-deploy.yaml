@@ -1,21 +1,11 @@
-name: SSH Deploy
-
-on: [push]
-
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-    - name: Deploy to Server
-      uses: easingthemes/ssh-deploy@v2.1.5
-      with:
-        REMOTE_HOST: github.com
-        REMOTE_USER: git
-        REMOTE_PORT: 22
-        TARGET: /home/REMOTE_USER/
-        ARGS: -rltgoDzvO
-      env:
-        SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-        ARGS: -avz --delete --exclude='.git/' /path/to/local/directory user@server:/path/to/remote/directory
+Run easingthemes/ssh-deploy@v2.1.5
+  with:
+    REMOTE_HOST: github.com
+    REMOTE_USER: git
+    REMOTE_PORT: 22
+    TARGET: https://github.com/starlf/starlf.github.io.git  # 替换为你的实际 GitHub 仓库的路径
+    ARGS: -rltgoDzvO
+  env:
+    SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}  # 使用 GitHub Secrets 存储 SSH 私钥
+    ARGS: -avz --delete --exclude='.git/'
+[general] GITHUB_WORKSPACE:  /home/runner/work/starlf.github.io/starlf.github.io
