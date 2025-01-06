@@ -11,7 +11,7 @@ jobs:
     - name: Deploy to Server
       uses: easingthemes/ssh-deploy@v2.1.5
       with:
-        REMOTE_HOST: https://starlf.github.io
+        REMOTE_HOST: github.com
         REMOTE_USER: git
         REMOTE_PORT: 22
         TARGET: /home/REMOTE_USER/
