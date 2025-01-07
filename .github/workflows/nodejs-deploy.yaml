@@ -12,17 +12,20 @@ jobs:
     steps:
     - name: Checkout code
       uses: actions/checkout@v2
-      run: npm install -g pnpm
       with:
         fetch-depth: 0 # 确保整个 Git 历史被检出
         submodules: true # 如果有子模块的话
 
     - name: Set up Node.js and pnpm
       uses: actions/setup-node@v3
-      run: npm install -g pnpm
       with:
         node-version: '18' # 根据需要调整版本
         cache: 'pnpm' # 使用 pnpm 缓存
+
+    - name: Install dependencies and build site
+      run: |
+        pnpm install # 使用 pnpm 安装依赖
+        pnpm run build # 构建站点
 
     - name: Debug environment
       run: |
@@ -40,11 +43,6 @@ jobs:
           echo "Please make sure that the pnpm-lock.yaml file is in the correct location."
           exit 1
         fi
-
-    - name: Install dependencies and build site
-      run: |
-        pnpm install # 使用 pnpm 安装依赖
-        pnpm run build # 构建站点
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
