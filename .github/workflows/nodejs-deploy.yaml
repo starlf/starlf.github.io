@@ -48,5 +48,5 @@ jobs:
       uses: peaceiris/actions-gh-pages@v3
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir:./dist # 构建后的站点输出目录，根据实际情况调整
+        publish_dir: ./dist # 构建后的站点输出目录，根据实际情况调整
         commit_message: ${{ github.event.head_commit.message }} # 可选：使用最近一次提交的消息作为此次部署的提交消息
