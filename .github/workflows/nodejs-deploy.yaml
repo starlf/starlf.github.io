@@ -22,6 +22,12 @@ jobs:
         node-version: '18' # 根据需要调整版本
         cache: 'pnpm' # 使用 pnpm 缓存
 
+    - name: Set pnpm executable permissions
+      run: chmod +x /usr/local/bin/pnpm
+    
+    - name: Set up PATH
+      run: echo "/usr/local/bin" >> $GITHUB_PATH
+
     - name: Install dependencies and build site
       run: |
         pnpm install # 使用 pnpm 安装依赖
