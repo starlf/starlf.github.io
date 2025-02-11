@@ -1,11 +1,10 @@
 import { defineConfig } from "umi";
-
 const path = require('path');
 
 export default defineConfig({
   routes: [
     { path: "/", component: "index" },
-    { path: "/docs/:docName", component: "docs" }, // 添加文档路由
+    { path: "/docs/:docName", component: "docs/[docName]" }, // 动态路由
   ],
   npmClient: "pnpm",
   chainWebpack: (memo) => {
