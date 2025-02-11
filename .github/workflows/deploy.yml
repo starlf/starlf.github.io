@@ -19,7 +19,7 @@ jobs:
           node-version: 16 # 可根据需要调整 Node.js 版本
 
       - name: Install dependencies
-        run: npm install
+        run: npm install --legacy-peer-deps
 
       - name: Build project
         run: npm run build
